@@ -1,0 +1,202 @@
+/* ==========================================================
+   Colours and fonts - edit these to re-theme the whole site
+   ========================================================== */
+:root {
+  --accent: #CDA863;    /* gold (RGB 205, 168, 99): sidebar, bars, bullets */
+  --text: #2C3E50;      /* body text and headings */
+  --bg: #F8F9FA;        /* page background */
+  --panel: #F2F3F7;     /* collapsed resume rows */
+  --border: #E6E6E6;
+  --on-accent: #000;    /* text on the gold sidebar */
+  --font: "Quicksand", system-ui, sans-serif;
+  --sidebar-width: 300px;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a {
+  color: var(--text);
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--accent); }
+
+:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+
+/* ---------- Layout: sidebar on the left, content on the right ---------- */
+.layout { display: flex; min-height: 100vh; }
+
+.sidebar {
+  flex: 0 0 var(--sidebar-width);
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.photo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar h1 { margin: 0 0 0.25rem; font-size: 1.4rem; line-height: 1.3; }
+
+.tagline {
+  margin: 0 0 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.sidebar nav { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.sidebar a {
+  color: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.sidebar a:hover { color: var(--on-accent); text-decoration: underline; }
+
+.sidebar-links { margin-top: auto; padding-top: 2rem; }
+
+main {
+  flex: 1;
+  min-width: 0;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 4rem 3.5rem 3rem;
+}
+
+section + section { margin-top: 5rem; }
+
+/* ---------- Headings and lists ---------- */
+h2 {
+  margin: 0 0 2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  margin-top: 0.75rem;
+  background: var(--accent);
+}
+
+h3 {
+  margin: 2rem 0 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+li { margin-bottom: 0.35rem; }
+li::marker { color: var(--accent); }
+
+/* ---------- Project photos ---------- */
+.photos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.photos figure { margin: 0; }
+.photos img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.1);
+}
+.photos figcaption { margin-top: 0.5rem; font-size: 0.85rem; line-height: 1.5; }
+
+/* ---------- Resume (click-to-open rows) ---------- */
+details {
+  margin-bottom: 0.6rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+details[open] { background: #fff; border-left: 4px solid var(--accent); }
+
+summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--accent); }
+details[open] summary::after { content: "\2013"; }
+summary:hover { background: var(--border); }
+
+.details-body { padding: 0 1.25rem 1.25rem; }
+.details-body p { margin: 0 0 0.5rem; }
+.details-body ul { margin-bottom: 0; }
+.period { font-style: italic; }
+
+footer { margin-top: 5rem; font-size: 0.85rem; }
+
+/* ---------- Phones and small tablets: sidebar becomes a header ---------- */
+@media (max-width: 768px) {
+  .layout { flex-direction: column; }
+
+  .sidebar {
+    position: static;
+    flex: none;
+    width: 100%;
+    height: auto;
+    padding: 2rem 1.5rem;
+  }
+  .sidebar nav { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.25rem; }
+  .sidebar-links { margin-top: 0; padding-top: 1.25rem; }
+
+  main { padding: 2.5rem 1.25rem 2rem; }
+  .photos { grid-template-columns: 1fr; }
+  h2 { font-size: 1.3rem; letter-spacing: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

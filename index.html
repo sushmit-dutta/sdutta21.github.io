@@ -18,11 +18,13 @@
   - Colours and fonts live at the top of style.css.
   - Add a bullet:         copy a <li>...</li> line and change the text.
   - Add a project photo:  copy a <figure>...</figure> block and change the image path + caption.
-  - Add a resume entry:   copy a <details>...</details> block.
   - Photos go in images/ (keep them under ~500 KB each so the page loads fast).
 -->
 
 <div class="layout">
+
+  <!-- Top-right link to the resume (replace images/Resume.pdf to update it) -->
+  <a class="resume-link" href="images/Resume.pdf" target="_blank" rel="noopener">resume.pdf</a>
 
   <!-- ============ SIDEBAR ============ -->
   <header class="sidebar">
@@ -33,7 +35,6 @@
     <nav>
       <a href="#about">About Me</a>
       <a href="#projects">Projects</a>
-      <a href="#resume">Resume</a>
     </nav>
 
     <div class="sidebar-links">
@@ -104,69 +105,6 @@
           <figcaption>Autonomous Ramen Maker - built with 4 friends.</figcaption>
         </figure>
       </div>
-    </section>
-
-    <!-- ============ RESUME ============ -->
-    <section id="resume">
-      <h2>Resume</h2>
-      <p><a href="images/Resume.pdf" target="_blank" rel="noopener">Download as PDF</a></p>
-
-      <h3>Experience</h3>
-
-      <details>
-        <summary><span>Architecture | <strong>Lunar Energy</strong></span></summary>
-        <div class="details-body">
-          <p class="period">2023 - Present</p>
-          <ul>
-            <li>Program Lead / Architected: UL 1741 Power Control System (PCS), 15kWh System Configuration, WeatherWatch, and Fleet Management</li>
-            <li>Built and trained the service and installation team to scale fleet operations</li>
-            <li>Traveled to establish relationships with overseas contract manufacturers (CMs) in India and China to mitigate timeline risks</li>
-          </ul>
-        </div>
-      </details>
-
-      <details>
-        <summary><span>Co-Founder | <strong>Datum Agriculture (discontinued)</strong></span></summary>
-        <div class="details-body">
-          <p class="period">2022 - 2024</p>
-          <ul>
-            <li>Simplifying regulations for aquaculture farmers in the North East</li>
-          </ul>
-        </div>
-      </details>
-
-      <details>
-        <summary><span>Scrum Leader | <strong>ALP Technologies</strong></span></summary>
-        <div class="details-body">
-          <p class="period">2023 - 2024</p>
-          <ul>
-            <li>Piloted lean methodology to transition the company’s prototype to a product through two-week sprints</li>
-            <li>Led conversations to scale manufacturing through co-design with in-house engineers and factories</li>
-            <li>Coordinated with accelerators for Seed A funding to build a test facility and manufacture initial prototypes</li>
-          </ul>
-        </div>
-      </details>
-
-      <details>
-        <summary><span>Sustainability Consulting | <strong>Accenture</strong></span></summary>
-        <div class="details-body">
-          <p class="period">Summer 2022</p>
-          <ul>
-            <li>Reported on Environmental, Social, and Governance (ESG) outlooks of banks in Southeast Asia</li>
-            <li>Developed an ESG comparison metric to rank companies in their respective fields</li>
-            <li>Presented research at the Strategic Point conference in Singapore to represent Accenture</li>
-          </ul>
-        </div>
-      </details>
-
-      <h3>Education</h3>
-
-      <details>
-        <summary><span>Systems Engineering | <strong>Olin College of Engineering</strong></span></summary>
-        <div class="details-body">
-          <p>Coursework: Technology Venture Capstone, Principles of Systems Engineering, User Experience Design, Power Electronics, Mechanical Systems, Computer Architecture, Discrete Math</p>
-        </div>
-      </details>
     </section>
 
     <footer>

@@ -5,8 +5,6 @@
   --accent: #CDA863;    /* gold (RGB 205, 168, 99): sidebar, bars, bullets */
   --text: #2C3E50;      /* body text and headings */
   --bg: #F8F9FA;        /* page background */
-  --panel: #F2F3F7;     /* collapsed resume rows */
-  --border: #E6E6E6;
   --on-accent: #000;    /* text on the gold sidebar */
   --font: "Quicksand", system-ui, sans-serif;
   --sidebar-width: 300px;
@@ -37,7 +35,7 @@ a:hover { color: var(--accent); }
 :focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
 
 /* ---------- Layout: sidebar on the left, content on the right ---------- */
-.layout { display: flex; min-height: 100vh; }
+.layout { position: relative; display: flex; min-height: 100vh; }
 
 .sidebar {
   flex: 0 0 var(--sidebar-width);
@@ -96,6 +94,17 @@ main {
 
 section + section { margin-top: 5rem; }
 
+/* resume.pdf link, top right of the page */
+.resume-link {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  z-index: 1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
 /* ---------- Headings and lists ---------- */
 h2 {
   margin: 0 0 2rem;
@@ -144,38 +153,6 @@ li::marker { color: var(--accent); }
 }
 .photos figcaption { margin-top: 0.5rem; font-size: 0.85rem; line-height: 1.5; }
 
-/* ---------- Resume (click-to-open rows) ---------- */
-details {
-  margin-bottom: 0.6rem;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-}
-details[open] { background: #fff; border-left: 4px solid var(--accent); }
-
-summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.25rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-  list-style: none;
-}
-summary::-webkit-details-marker { display: none; }
-summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--accent); }
-details[open] summary::after { content: "\2013"; }
-summary:hover { background: var(--border); }
-
-.details-body { padding: 0 1.25rem 1.25rem; }
-.details-body p { margin: 0 0 0.5rem; }
-.details-body ul { margin-bottom: 0; }
-.period { font-style: italic; }
-
 footer { margin-top: 5rem; font-size: 0.85rem; }
 
 /* ---------- Phones and small tablets: sidebar becomes a header ---------- */
@@ -193,6 +170,7 @@ footer { margin-top: 5rem; font-size: 0.85rem; }
   .sidebar-links { margin-top: 0; padding-top: 1.25rem; }
 
   main { padding: 2.5rem 1.25rem 2rem; }
+  .resume-link { top: 1rem; right: 1rem; color: var(--on-accent); text-decoration-color: var(--on-accent); }
   .photos { grid-template-columns: 1fr; }
   h2 { font-size: 1.3rem; letter-spacing: 3px; }
 }
